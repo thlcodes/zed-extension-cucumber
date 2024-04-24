@@ -1,0 +1,11 @@
+id = "zed-cucumber"
+name = "Zed Cucumber Support"
+version = "0.0.1"
+schema_version = 1
+authors = ["Thomas Liebeskind <thomas.liebeskind@gmail.com>"]
+description = "Zed Cucumber Support"
+repository = "https://github.com/thlcodes/zed-cucumber"
+
+[grammars.gherkin]
+repository = "https://github.com/thlcodes/tree-sitter-gherkin"
+commit = "754b072b8a1a0775def6207233ea0dde0dff009d"

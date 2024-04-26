@@ -1,10 +1,6 @@
 [
-  (feature_keyword)
-  (background_keyword)
-  (scenario_keyword)
-  (scenario_outline_keyword)
+  (section_keyword)
   (step_keywords)
-  (examples_keyword)
 ] @keyword
 
 ; (title) @string
@@ -23,3 +19,5 @@
 (tag) @label
 
 (table_cell) @constant
+
+(docstring) @text

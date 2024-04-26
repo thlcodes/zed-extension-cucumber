@@ -1,11 +1,15 @@
-id = "zed-cucumber"
-name = "Zed Cucumber Support"
+id = "zed-extension-cucumber"
+name = "Cucumber/Gherkin support for Zed"
 version = "0.0.1"
 schema_version = 1
 authors = ["Thomas Liebeskind <thomas.liebeskind@gmail.com>"]
 description = "Zed Cucumber Support"
-repository = "https://github.com/thlcodes/zed-cucumber"
+repository = "https://github.com/thlcodes/zed-extension-cucumber"
+
+[language_servers.cucumber]
+name = "Cucumber LSP"
+language = "Gherkin"
 
 [grammars.gherkin]
 repository = "https://github.com/thlcodes/tree-sitter-gherkin"
-commit = "754b072b8a1a0775def6207233ea0dde0dff009d"
+commit = "aa8fd92b0cdf31bc45c47d2ce5e8f76a88c984f4"

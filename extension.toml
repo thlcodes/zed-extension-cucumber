@@ -1,5 +1,5 @@
-id = "zed-extension-cucumber"
-name = "Cucumber/Gherkin support for Zed"
+id = "cucumber"
+name = "Cucumber/Gherkin support"
 version = "0.0.1"
 schema_version = 1
 authors = ["Thomas Liebeskind <thomas.liebeskind@gmail.com>"]

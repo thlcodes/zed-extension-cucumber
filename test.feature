@@ -3,11 +3,11 @@ Feature: Bla bla
   Background:
     When whatever
 
-  @tag
-  Scenario: whatever
+  @tagsdf @tag.123
+  Scenario: atever
     Given I want that "string"
     When dsgdfg
-    Then I click 123
+    Then I receive cx.MMA
       | peter | john |
       | yes   | no   |
     And some dockstrin

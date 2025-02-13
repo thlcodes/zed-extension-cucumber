@@ -1,6 +1,6 @@
 id = "cucumber"
 name = "Cucumber/Gherkin support"
-version = "0.0.1"
+version = "0.0.2"
 schema_version = 1
 authors = ["Thomas Liebeskind <thomas.liebeskind@gmail.com>"]
 description = "Zed Cucumber Support"
@@ -12,4 +12,4 @@ language = "Gherkin"
 
 [grammars.gherkin]
 repository = "https://github.com/thlcodes/tree-sitter-gherkin"
-commit = "aa8fd92b0cdf31bc45c47d2ce5e8f76a88c984f4"
+commit = "133e9b270e80ecb8875bbe2f0625fcb276ea5ddb"

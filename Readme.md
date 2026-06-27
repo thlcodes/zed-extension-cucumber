@@ -1,27 +1,39 @@
 # Cucumber/Gherkin support for Zed
 
-_WIP_ Zed extension to add support for Cucumber/Gherkin.
+Zed extension adding Cucumber/Gherkin syntax highlighting and LSP support.
+
+## Prerequisites
+
+Install the language server globally with npm:
+
+```bash
+npm install -g @cucumber/language-server
+```
+
+> **Note:** `npm` is required (not bun/yarn/pnpm). The language server resolves tree-sitter WASM files via nested `node_modules` paths that only npm's global install layout provides.
 
 ## Features
 
-- Gherkin Tree-Sitter Grammar (via [thlcodes/tree-sitter-gherkin](https://github.com/thlcodes/tree-sitter-gherkin)), including
+- Gherkin Tree-Sitter Grammar (via [alistairstead/tree-sitter-gherkin](https://github.com/alistairstead/tree-sitter-gherkin), fork of [binhtddev/tree-sitter-gherkin](https://github.com/binhtddev/tree-sitter-gherkin))
+  - Syntax highlighting with semantic step coloring (Given/When/Then)
+  - Injections (docstring language detection)
+  - Outline navigation
+  - Full Gherkin spec: Feature, Scenario, Scenario Outline, Background, Examples, Rules, tags, data tables, docstrings
+  - i18n keyword support
 
-  - highlights
-  - injections (for `docstring`)
-  - outline
-
-- LSP (via @cucumber/languageserver)
-  - looks for global executable `cucumber-language-server` first, installs/uses latest package `@cucumber/language-server` otherwise
-  - supports configuration via project setting, e.g.
+- LSP (via `@cucumber/language-server`)
+  - Autocompletion for step definitions
+  - Go-to-definition for steps
+  - Configuration via `.zed/settings.json`:
     ```json
     {
       "lsp": {
         "cucumber": {
           "settings": {
-            "glue": ["src/**/*.ts"]
+            "features": ["features/**/*.feature"],
+            "glue": ["steps/**/*.ts"]
           }
         }
       }
     }
     ```
-  - **Hint**: currently `@cucumber/language-server` uses a `node-tree-sitter` version that does not support Node 19/20

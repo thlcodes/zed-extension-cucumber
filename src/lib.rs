@@ -173,10 +173,10 @@ impl zed::Extension for CucumberExtension {
             config.insert(
                 "glue".to_string(),
                 zed::serde_json::json!([
-                    "features/**/*.{ts,js,rb,py,java,kt}",
+                    "features/**/*.{ts,js,rb,py,cs,rs,java,kt}",
                     "src/test/**/*.{java,kt}",
-                    "step_definitions/**/*.{ts,js,rb,py}",
-                    "**/*.steps.{ts,js,rb,py}"
+                    "step_definitions/**/*.{ts,js,rb,py,cs,rs}",
+                    "**/*.steps.{ts,js,rb,py,cs,rs}"
                 ]),
             );
         }
@@ -198,10 +198,7 @@ impl zed::Extension for CucumberExtension {
                 return Some(CodeLabel {
                     code: label.clone(),
                     spans: vec![
-                        CodeLabelSpan::literal(
-                            keyword.trim_end(),
-                            Some(highlight.to_string()),
-                        ),
+                        CodeLabelSpan::literal(keyword.trim_end(), Some(highlight.to_string())),
                         CodeLabelSpan::literal(" ", None),
                         CodeLabelSpan::literal(rest, None),
                     ],

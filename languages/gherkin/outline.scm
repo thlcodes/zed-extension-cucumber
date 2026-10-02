@@ -1,24 +1,33 @@
 (feature
-    (section_keyword) @context
-    (title) @name) @item
+  (feature_header
+    (feature_line
+      (feature_kw) @context
+      (context) @name))) @item
 
-(section
-    (section_keyword) @context
-    (title)? @name) @item
+(scenario_definition
+  (scenario
+    (scenario_line
+      (scenario_kw) @context
+      (context) @name))) @item
 
-(step
-    (step_keywords) @context
-    (step_definition) @name
-    ) @item
+(scenario_definition
+  (scenario
+    (scenario_outline_line
+      (scenario_outline_kw) @context
+      (context) @name))) @item
 
-(docstring
-    (docstring_start
-        (docstring_lang) @name
-    )
-    ) @item
+(background
+  (background_line
+    (background_kw) @context)) @item
 
-(tag) @name @item
+(rule
+  (rule_header
+    (rule_line
+      (rule_kw) @context
+      (context) @name))) @item
 
-(table
-    (table_header) @name
-    ) @item
+(examples_definition
+  (examples
+    (examples_line
+      (examples_kw) @context
+      (context) @name))) @item

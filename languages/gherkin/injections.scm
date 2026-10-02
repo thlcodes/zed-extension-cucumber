@@ -1,6 +1,3 @@
-(docstring
-    (docstring_start
-        (docstring_lang) @language
-    )
-    (docstring_content) @content
-)
+(doc_string
+  (media_type) @language
+  (doc_string_content) @content)

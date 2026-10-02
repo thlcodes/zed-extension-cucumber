@@ -10,8 +10,21 @@ struct CucumberExtension {
 }
 
 const SERVER_BINARY: &str = "cucumber-language-server";
-const SERVER_PATH: &str =
-    "node_modules/@cucumber/language-server/bin/cucumber-language-server.cjs";
+
+const SERVER_PATH: &str = "node_modules/@cucumber/language-server/bin/cucumber-language-server.cjs";
+
+/// Starts the server the way its bin does, but with the grammar `.wasm` files
+/// taken from the hoisted `node_modules/@cucumber/language-service/dist`.
+/// The bin looks for them under `language-server/node_modules/...`, which npm
+/// does not create, so every glue file failed to parse and every step was
+/// reported as undefined (#12).
+const SERVER_LAUNCHER: &str = r#"
+const modules = process.argv[1];
+const { startStandaloneServer } = require(modules + "/@cucumber/language-server/dist/cjs/src/wasm/startStandaloneServer");
+const { NodeFiles } = require(modules + "/@cucumber/language-server/dist/cjs/src/node/NodeFiles");
+const { connection } = startStandaloneServer(modules + "/@cucumber/language-service/dist", (rootUri) => new NodeFiles(rootUri));
+process.on("unhandledRejection", (reason) => connection.console.error("Unhandled rejection: " + reason));
+"#;
 const PACKAGE_NAME: &str = "@cucumber/language-server";
 
 /// Step keywords mapped to their tree-sitter highlight group.
@@ -101,16 +114,14 @@ impl zed::Extension for CucumberExtension {
         let (command, args) = match worktree.which(SERVER_BINARY) {
             Some(command) => (command, lsp_args),
             None => {
-                let script_path = self.server_script_path(language_server_id)?;
-                let mut args = lsp_args.clone();
-                args.insert(
-                    0,
-                    env::current_dir()
-                        .unwrap()
-                        .join(&script_path)
-                        .to_string_lossy()
-                        .to_string(),
-                );
+                self.server_script_path(language_server_id)?;
+                let node_modules = env::current_dir()
+                    .unwrap()
+                    .join("node_modules")
+                    .to_string_lossy()
+                    .to_string();
+                let mut args = vec!["-e".into(), SERVER_LAUNCHER.into(), node_modules];
+                args.extend(lsp_args);
                 (zed::node_binary_path()?, args)
             }
         };

@@ -1,0 +1,52 @@
+[
+  {
+    "label": "cucumber-js: feature — $ZED_CUSTOM_feature_name",
+    "command": "npx cucumber-js $ZED_FILE",
+    "tags": ["cucumber-feature"]
+  },
+  {
+    "label": "cucumber-js: scenario — $ZED_CUSTOM_scenario_name",
+    "command": "npx cucumber-js $ZED_FILE --name \"$ZED_CUSTOM_scenario_name\"",
+    "tags": ["cucumber-scenario"]
+  },
+  {
+    "label": "ruby cucumber: feature — $ZED_CUSTOM_feature_name",
+    "command": "bundle exec cucumber $ZED_FILE",
+    "tags": ["cucumber-feature"]
+  },
+  {
+    "label": "ruby cucumber: scenario — $ZED_CUSTOM_scenario_name",
+    "command": "bundle exec cucumber $ZED_FILE --name \"$ZED_CUSTOM_scenario_name\"",
+    "tags": ["cucumber-scenario"]
+  },
+  {
+    "label": "maven cucumber: feature — $ZED_CUSTOM_feature_name",
+    "command": "mvn test -Dcucumber.features=\"$ZED_FILE\"",
+    "tags": ["cucumber-feature"]
+  },
+  {
+    "label": "maven cucumber: scenario — $ZED_CUSTOM_scenario_name",
+    "command": "mvn test -Dcucumber.features=\"$ZED_FILE\" -Dcucumber.filter.name=\"$ZED_CUSTOM_scenario_name\"",
+    "tags": ["cucumber-scenario"]
+  },
+  {
+    "label": "playwright-bdd: feature — $ZED_CUSTOM_feature_name",
+    "command": "npx bddgen && npx playwright test --grep \"$ZED_CUSTOM_feature_name\"",
+    "tags": ["cucumber-feature"]
+  },
+  {
+    "label": "playwright-bdd: scenario — $ZED_CUSTOM_scenario_name",
+    "command": "npx bddgen && npx playwright test --grep \"$ZED_CUSTOM_scenario_name\"",
+    "tags": ["cucumber-scenario"]
+  },
+  {
+    "label": "behat: feature — $ZED_CUSTOM_feature_name",
+    "command": "vendor/bin/behat $ZED_FILE",
+    "tags": ["cucumber-feature"]
+  },
+  {
+    "label": "behat: scenario — $ZED_CUSTOM_scenario_name",
+    "command": "vendor/bin/behat $ZED_FILE --name \"$ZED_CUSTOM_scenario_name\"",
+    "tags": ["cucumber-scenario"]
+  }
+]

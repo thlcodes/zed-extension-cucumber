@@ -1,8 +1,8 @@
 id = "cucumber"
 name = "Cucumber/Gherkin support"
-version = "0.0.2"
+version = "0.0.3"
 schema_version = 1
-authors = ["Thomas Liebeskind <thomas.liebeskind@gmail.com>"]
+authors = ["Thomas Liebeskind <thomas.liebeskind@gmail.com>", "Alistair Stead <alistair@kodehort.com>"]
 description = "Zed Cucumber Support"
 repository = "https://github.com/thlcodes/zed-extension-cucumber"
 
@@ -11,5 +11,5 @@ name = "Cucumber LSP"
 language = "Gherkin"
 
 [grammars.gherkin]
-repository = "https://github.com/thlcodes/tree-sitter-gherkin"
-commit = "133e9b270e80ecb8875bbe2f0625fcb276ea5ddb"
+repository = "https://github.com/alistairstead/tree-sitter-gherkin"
+commit = "ce7dca2734edc690479bb7639fe494668cf7399a"
